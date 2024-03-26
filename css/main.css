@@ -1,0 +1,230 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+
+
+
+
+
+/* Section 1 */
+.section1 {
+    height: 500px; /* Adjust height as needed */
+    background-image: url(../Assets/Images/homePageHeader.png); /* Background image */
+    background-size: cover;
+    background-position: center;
+   
+}
+
+
+.text-overlay {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: #000000;
+    text-align: center;
+}
+
+/* Section 2 */
+.section2 {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    background-color: aqua;
+}
+
+.image-block {
+   size: 30%;
+    padding: 20px;
+   
+}
+
+
+.gallery {
+    flex: 1;
+    width: 30%;
+    /* Style your image gallery here */
+}
+
+.text-box {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.text-box button{
+    background-color: #ff0000;
+    border: none;
+    border-radius: 20px;
+    dec
+}
+
+/* Section 3 */
+.section3 {
+    display: flex;
+    align-items: center;
+}
+
+.text-block {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Section 4 */
+.section4 {
+    text-align: center;
+}
+
+.title {
+    padding: 20px;
+}
+
+.image-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.image-grid img {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
+
+.text-block {
+    padding: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.logo img {
+    width: 100px;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Add your social media styling here */
+
+.top-nav {
+    background-color: rgba(230, 230, 230, 0.4); 
+    width: 90%;
+    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px; 
+    overflow: hidden; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.top-nav .logo {
+    flex: 0 0 auto;
+}
+
+.top-nav .logo-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    opacity: 0.8; /* Set logo opacity */
+    transition: opacity 0.3s ease;
+}
+
+.top-nav .logo-img:hover {
+    opacity: 1; /* Hover effect for logo */
+}
+
+.top-nav nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.top-nav nav ul.nav-links {
+    display: flex;
+    justify-content: center;
+}
+
+.top-nav nav ul.nav-links li {
+    display: inline;
+}
+
+.top-nav nav ul.nav-links li a {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px; /* Rounded borders */
+    opacity: 0.8; /* Set item opacity */
+    transition: opacity 0.3s ease;
+}
+
+.top-nav nav ul.nav-links li a:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Hover background color with opacity */
+    opacity: 1; /* Hover effect for items */
+}
+
+.top-nav .actions {
+    flex: 0 0 auto;
+}
+
+.top-nav .search-cart-container {
+    display: flex;
+    align-items: center;
+}
+
+.top-nav .search-bar {
+    position: relative;
+}
+
+.top-nav .search-input {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    width: 150px; /* Adjust width as needed */
+    opacity: 0.8; /* Set input field opacity */
+    transition: opacity 0.3s ease;
+}
+
+.top-nav .search-input:focus {
+    outline: none;
+}
+
+.top-nav .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+
+
