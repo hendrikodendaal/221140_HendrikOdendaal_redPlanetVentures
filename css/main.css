@@ -1,13 +1,34 @@
 body{
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    width: auto;
     
 }
 
 
+@font-face {
+    font-family: 'Porter sans block';
+    src: url(../Assets/Fonts/porter_sans_block/porter-sans-inline-block-webfont.woff) format("woff");
+}
 
+@font-face {
+    font-family: 'Porter2';
+    src: url(../Assets/Fonts/porter_sans_block/porter-sans-inline-block-webfont.eot) format("eot");
+}
 
+@font-face {
+    font-family: 'Porter3';
+    src: url(../Assets/Fonts/porter_sans_block/porter-sans-inline-block-webfont.ttf) format("tff");
+}
+@font-face {
+    font-family: 'Porter4';
+    src: url(../Assets/Fonts/porter_sans_block/porter-sans-inline-block.otf) format("otf");
+}
 
+@font-face {
+    font-family: 'Porter5';
+    src: url(../Assets/Fonts/porter_sans_block/porter-sans-inline-block.ttf) format("ttf");
+}
 
 /* Section 1 */
 .section1 {
@@ -21,67 +42,184 @@ body{
 
 .text-overlay {
     position: absolute;
-    top: 40%;
+    top: 450px;
     left: 20%;
     transform: translate(-50%, -50%);
     color: #000000;
     text-align: center;
+   
+}
+.section1 p{
+    font-size: 25px;
+    font-family: 'porter sans block';
+    padding-left: 20%;
+    color: #ff0000;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.section1 h5{
+    margin-top: 0;
 }
 
 /* Section 2 */
 .section2 {
-    height: 500px;
+    height: auto;
     display: flex;
     align-items: center;
-    background-color: aqua;
+    background-color: rgb(78, 0, 129);
+    color: #fff;
+    
+    padding: 40px; /* Add padding for better spacing */
 }
 
 .image-block {
-   size: 30%;
-    padding: 20px;
-   
+    position: relative; /* Ensure proper positioning of arrows */
+    flex-shrink: 0; /* Prevent image-block from shrinking */
+    margin-right: 50px; /* Add spacing between image-block and text-box */
 }
 
+.image-block img {
+    width: 100%; /* Use 100% width to fill image-block */
+}
 
-.gallery {
-    flex: 1;
-    width: 30%;
-    /* Style your image gallery here */
+.arrowLeft,
+.arrowRight {
+    position: absolute;
+    top: 50%; /* Vertically center the arrows */
+    transform: translateY(-50%); /* Vertically center the arrows */
+    height: auto;
+    max-width: 30px;
+    cursor: pointer; /* Add cursor pointer */
+}
+
+.arrowLeft {
+    left: 0;
+    size: 10%;
+}
+
+.arrowRight {
+    right: 0;
+}
+
+.section2 h2 {
+    font-size: 35px;
+    line-height: 1.2;
+     /* Remove default margin */
+    text-align: left;
+}
+
+.section2 p {
+    font-size: 16px;
+    text-align: left;
+    font-weight: lighter;
+    line-height: 2; /* Adjust line height */
+    color: #d8d8d8;
+    margin: 10px 0; /* Add margin for spacing */
 }
 
 .text-box {
-    flex: 1;
-    padding: 20px;
-    text-align: center;
+    text-align: left;
 }
 
-.text-box button{
-    background-color: #ff0000;
-    border: none;
-    border-radius: 20px;
-    dec
+.text-box h6 {
+    color: rgb(87, 209, 168);
+    margin: 0; /* Remove default margin */
+    font-size: 18px;
+   
 }
+
+.button {
+    background-color: #db0202;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px 60px;
+    cursor: pointer; /* Add cursor pointer */
+}
+
 
 /* Section 3 */
 .section3 {
     display: flex;
     align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .text-block {
     flex: 1;
-    padding: 20px;
-    text-align: center;
+    padding: 50px;
+    text-align: left;
+    font-family: Arial, sans-serif; /* Change font family */
 }
+
+.text-block h6 {
+    color: rgb(87, 209, 168);
+    margin: 0; /* Remove default margin */
+    font-size: 18px; /* Increase font size */
+    padding-left: 40px;
+}
+
+.text-block h2 {
+    margin-top: 10px; /* Remove default margin */
+    font-size: 32px; /* Increase font size */
+    font-weight: 20px;
+    padding-left: 40px;
+}
+
+.text-block p {
+    margin: 10px 0 20px; /* Add some margin for spacing */
+    line-height: 2; /* Adjust line height for better readability */
+    color: #333;
+    padding: 40px;
+    
+}
+
+.image-block {
+    flex-shrink: 0; /* Prevent image-block from shrinking */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    border-radius: 8px; /* Add border radius for a softer look */
+    overflow: hidden; /* Hide overflowing box-shadow */
+    transition: transform 0.3s ease; /* Add transition effect */
+}
+
+.image-block:hover {
+    transform: scale(1.05); /* Scale up the image on hover */
+}
+
+
+
+
 
 /* Section 4 */
 .section4 {
     text-align: center;
+    background-color: rgb(71, 26, 100);
 }
 
 .title {
     padding: 20px;
 }
+
+.title h2{
+    font-size: 36px;
+    padding-left: 30%;
+    padding-right: 30%;
+    width: 40%;
+    text-align: center;
+    color: #fff;
+    margin: 10px;
+}
+
+.title h6 {
+    color: rgb(87, 209, 168);
+    margin: 0; /* Remove default margin */
+    font-size: 18px; /* Increase font size */
+    
+}
+
 
 .image-grid {
     display: flex;
@@ -94,16 +232,69 @@ body{
     width: 150px;
     height: 150px;
     margin: 10px;
+    border-radius: 10px;
 }
 
 .text-block {
     padding: 20px;
 }
 
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    text-align: justify;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.flexItem3 {
+    padding: 10px;
+    flex:  25%;
+    color: #fff;
+}
+
+.flexItem3 h2{
+    text-align: center;
+}
+
+.flexItem3 p{
+    color: #aaaaaa;
+}
+
+.flexItem3 img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.button-container {
+    margin-top: 20px; /* Add margin to separate the button from the content above */
+}
+
+.button {
+    background-color: #db0202;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px 60px;
+    cursor: pointer; /* Add cursor pointer */
+}
+
+/* Center the button container */
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
 /* Footer */
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
     padding: 20px;
     text-align: center;
 }
@@ -123,17 +314,17 @@ footer nav ul li {
 }
 
 footer nav ul li a {
-    color: #fff;
+    color: #000000;
     text-decoration: none;
 }
 
 /* Add your social media styling here */
 
 .top-nav {
-    background-color: rgba(230, 230, 230, 0.4); 
+    background-color: rgba(255, 246, 246, 0.801); 
     width: 90%;
     margin: 0 auto;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -225,6 +416,11 @@ footer nav ul li a {
     cursor: pointer;
     position: absolute;
     right: 0;
+}
+
+
+.topBlock h6{
+    size: 5px;
 }
 
 
