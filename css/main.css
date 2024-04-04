@@ -276,6 +276,7 @@ body{
 
 .button-container {
     margin-top: 20px; /* Add margin to separate the button from the content above */
+    padding-bottom: 30px;
 }
 
 .button {
@@ -327,7 +328,7 @@ footer nav ul li a {
     background-color: rgba(255, 246, 246, 0.678); 
     width: 90%;
     margin: 0 auto;
-    position: absolute;
+    position: sticky;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -338,7 +339,7 @@ footer nav ul li a {
     justify-content: space-between;
     padding: 10px;
     box-sizing: border-box;
-    height: 80px;
+    max-height: 50px;
 }
 
 .top-nav .logo {
@@ -436,11 +437,55 @@ footer nav ul li a {
 
 
 /* Contact page */
+
+.section6 {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    padding-top: 50px;
+    padding-left: 20px;
+  }
+  
+  .text {
+    flex: 1; /* Grow to fill available space */
+    padding: 0 20px; /* Adjust spacing as needed */
+  }
+  
+  .text p{
+    font-size: 15px;
+    line-height: 1.5;
+    padding-right: 30px;
+    color: #979797;
+  }
+
+  .text h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 1000;
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .text h6{
+    color: rgb(87, 209, 168);
+    margin: 0; /* Remove default margin */
+    font-size: 10px; /* Increase font size */
+    
+  }
+
+  .image {
+    flex: 1; /* Grow to fill available space */
+    text-align: center; /* Center image horizontally */
+  }
+  
+  .image img {
+    width: 90%; /* Ensure image doesn't exceed container width */
+  }
+  
+
 .top-nav {
     background-color: rgba(255, 246, 246, 0.678); 
     width: 90%;
     margin: 0 auto;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -466,11 +511,7 @@ footer nav ul li a {
     font-size: 36px;
     margin-bottom: 20px;
 }
-.rocket-img {
-    display: block;
-    margin: 0 auto;
-    width: 100px;
-}
+
 .contact-info {
     text-align: center;
     margin-top: 30px;
@@ -507,25 +548,10 @@ body {
     margin: 0 auto;
     padding: 20px;
 }
-.column {
-    flex: 1;
-    padding: 20px;
-}
-.social-icons {
-    text-align: center;
-    margin-top: 20px;
-}
-.social-icons a {
-    color: #ffffff;
-    font-size: 24px;
-    margin-right: 20px;
-    text-decoration: none;
-}
-.social-icons a:hover {
-    color: #ffcc00;
-}
+
 #map {
     height: 300px; /* Adjust the map height as needed */
+    
 }
 .contact-form {
     background-image: url('../Assets/Images/formBack.png'); /* Path to your background image */
@@ -533,8 +559,9 @@ body {
     background-position: center; /* Center the background image */
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 40px;
     color: #ffffff;
+    height: 92%;
 }
 
 .contact-form h2{
@@ -587,19 +614,9 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #630101; /* Darker color on hover */
 }
-.social-icons {
-    text-align: center;
-    margin-top: 20px;
-}
-.social-icons a {
-    color: #ffffff;
-    font-size: 24px;
-    margin-right: 20px;
-    text-decoration: none;
-}
-.social-icons a:hover {
-    color: #ffcc00;
-}
+
+
+
 #map {
     height: 300px; /* Adjust the map height as needed */
 }
@@ -608,42 +625,39 @@ button[type="submit"]:hover {
     padding: 20px;
 }
 
-.contact-form {
-    /* Your existing styles */
-}
-.social-icons {
-    text-align: center;
-    margin-top: 20px;
-}
-.social-icons a {
-    color: #ffffff;
-    font-size: 24px;
-    margin-right: 20px;
-    text-decoration: none;
-}
-.social-icons a:hover {
-    color: #ffcc00;
-}
-#map {
-    height: 300px; /* Adjust the map height as needed */
-}
-.column {
-    flex: 1;
-    padding: 20px;
-}
-
-.flexContainer {
+.flexContainers {
     display: flex;
     flex-direction: row;
     font-size: 16px;
-    
+    margin: 0;
+    width: 65%;
 
 }
 
+.column p{
+    color: rgb(87, 209, 168);
+    margin: 0; /* Remove default margin */
+    font-size: 15px; /* Increase font size */
+}
+
+.column h6{
+    color: rgb(87, 209, 168);
+    margin: 0; /* Remove default margin */
+    font-size: 15px; /* Increase font size */
+    padding-top: 40px;
+}
+
+.column h2{
+    margin-top: 0;
+    padding-top: 10px;
+    font-size: 30px;
+}
+
 .flexItem3 {
-    padding: 10px;
+    padding: 5px;
     flex:  100%;
     color: #fff;
+    margin: 0;
 }
 
 .flexItem3 h2{
@@ -663,7 +677,7 @@ button[type="submit"]:hover {
 }
 
 .sectionContact {
-    height: 200px; /* Adjust height as needed */
+    height: 250px; /* Adjust height as needed */
     background-image: url(../Assets/Images/headerbackBack.png); /* Background image */
     background-size: cover;
     background-position: center;
@@ -686,7 +700,7 @@ button[type="submit"]:hover {
     top: 150px;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: rgb(240, 224, 255);
     font-family: 'porter sans block';
     word-break: break-all;
     text-align: center;
@@ -694,6 +708,339 @@ button[type="submit"]:hover {
   
   .overlay h1 {
     font-size: 36px;
-    font-weight: bold;
+    
+    margin: 0;
+    
+    
+  }
+
+
+
+  /*Flights Page*/
+
+
+  .sectionContact4 {
+    height: 250px; /* Adjust height as needed */
+    background-image: url(../Assets/Images/headerbackBack.png); /* Background image */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+   
+}
+  .product-item {
+    display: flex;
+  }
+  
+  .product-image {
+    flex: 1;
+    margin-right: 20px;
+  }
+ 
+
+  .product-image img {
+    width: 420px;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  
+  
+  .product-details {
+    flex: 2;
+  }
+  
+ 
+
+  .quantity {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-container {
+    display: flex;
+    border: 1px solid #ffffff; /* Remove border */
+    border-radius: 5px;
+    background-color:rgb(71, 26, 100); /* Apply background color */
+    color: #fff;
+  }
+  
+  .quantity input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: none; /* Remove border */
+    background-color: transparent; /* Set background color to transparent */
+  }
+  
+  .quantity button {
+    width: 40px;
+    height: 50px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px !important;
+    background-color: transparent; /* Set background color to transparent */
+    cursor: pointer;
+  }
+  
+  .quantity button:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Add hover effect */
+  }
+  
+  .quantity button:first-child {
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .quantity button:last-child {
+    border-radius: 0 5px 5px 0;
+  }
+  
+  .quantity input[type="number"]::-webkit-inner-spin-button,
+  .quantity input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
     margin: 0;
   }
+  
+  .quantity input[type="number"] {
+    
+    background-color: transparent; /* Set background color to transparent */
+  }
+
+  .quantity-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: rgb(179, 147, 201);
+    width: auto; /* Adjust width as needed */
+    color: #fff !important;
+  }
+  
+  .book-now-button {
+    background-color: #ff0000 !important;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 10px !important;
+    padding: 20px 60px;
+    cursor: pointer; /* Ensure button height matches the quantity container */
+    text-align: center !important;
+    text-align: justify;
+  }
+  
+  .book-now-button:hover {
+    background-color: #cc0000;
+  }
+  
+
+
+  
+  .book-now-button:hover {
+    background-color: #cc0000 !important;
+  }
+  
+
+  .product-section {
+    padding: 20px;
+  }
+  
+  .product-item {
+    display: flex;
+  }
+  
+
+  
+  .book-now-button:hover {
+    background-color: #cc0000;
+  }
+
+  .star {
+    font-size: 36px;
+    color: rgb(66, 66, 66); /* Change color of empty stars */
+  }
+  
+  .star.filled {
+    color: gold; /* Change color of filled stars */
+  }
+  
+  .star.half-filled:before {
+    content: "\00BD"; /* Unicode for half star */
+    color: gold; /* Change color of half-filled star */
+  }
+
+  .quantity .buttonbook{
+    width: 30%;
+   height: 50px;
+    /* Add space between input fields and submit button */
+    border-radius: 10px !important;
+   padding-left: 10px;
+    background-color: #ff0000; /* Change color as needed */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+   
+  }
+  
+  .quantity-container {
+    color: #ffffff; /* Change font color to black */
+}
+
+.product-section p{
+    color: #dfdfdf;
+    font-size: 20px;
+}
+
+.paragraph p{
+    color: #707070;
+}
+
+.product-details h3{
+    color: #ffffff;
+    font-size: 20px;
+}
+.product-details h2{
+    font-size: 20px;
+}
+
+
+
+.search-bar2 {
+    display: flex;
+    align-items: center;
+    background-color: #333; /* Solid bar color */
+    padding: 10px 20px;
+}
+
+.filter,
+.result-counter,
+.show-per-page,
+.sort-by {
+    color: #fff;
+    font-size: 16px;
+    background-color: #333; /* Set background color */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    padding: 5px 10px; /* Add padding */
+    margin-right: 10px; /* Add margin between elements */
+}
+
+.filter {
+    width: 100px; /* Adjust width as needed */
+}
+
+
+
+.search-container {
+    padding-top: 200px; /* Adjust top padding to move the search bar down */
+}
+
+.search-bar2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; /* Solid bar color */
+    padding: 20px 20px 10px; /* Adjust padding to move the search bar down */
+}
+
+.filter-options,
+.result-counter,
+.dropdowns {
+    color: #fff;
+    font-size: 16px;
+}
+
+.dropdowns select {
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    
+    background-color: #ffffff; /* Solid bar color */
+    padding: 20px; /* Adjust padding for footer */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 40px;
+    width: auto; /* Allow the width to adjust automatically */
+    max-width: 200px;
+}
+
+.logo p {
+    font-size: 12px;
+    margin: 0 10px; /* Adjust margin for spacing */
+    text-align: justify;
+    line-height: 1.25;
+}
+
+.logo2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Ensure the menu items are displayed in a row */
+}
+
+.menu li {
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.menu a {
+    color: #616161;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.menu2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-icons {
+    display: flex;
+    
+    flex-direction: column;
+}
+
+.social-icons a {
+    margin-left: 10px;
+}
+
+.social-icons img {
+    max-height: 40px;
+}
+
+.social-icons2 {
+    display: flex;
+    flex-direction: row;
+}
