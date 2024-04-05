@@ -141,6 +141,10 @@ body{
     cursor: pointer; /* Add cursor pointer */
 }
 
+.button:hover {
+    background-color: #700000;
+  }
+
 
 /* Section 3 */
 .section3 {
@@ -498,9 +502,10 @@ footer nav ul li a {
     box-sizing: border-box;
     height: 80px;
 }
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
+.containers {
+   display: flex;
+   flex-direction: row; 
+    margin: 0;
     padding: 20px;
 }
 .header {
@@ -629,8 +634,9 @@ button[type="submit"]:hover {
     display: flex;
     flex-direction: row;
     font-size: 16px;
-    margin: 0;
-    width: 65%;
+   margin: 0;
+    width: 100%;
+    height: auto;
 
 }
 
@@ -654,26 +660,32 @@ button[type="submit"]:hover {
 }
 
 .flexItem3 {
-    padding: 5px;
+    padding: 20px;
     flex:  100%;
     color: #fff;
     margin: 0;
 }
 
-.flexItem3 h2{
-    text-align: center;
+.flexItem4 h2{
+    
 }
 
-.flexItem3 p{
+.flexItem4 p{
     color: #aaaaaa;
 }
 
-.flexItem3 img{
-    width: 100%;
+.flexItem4 img{
+    width: 80%;
     height: auto;
     object-fit: cover;
     overflow: hidden;
     border-radius: 10px;
+}
+
+.iconsSolcial {
+    display: flex;
+    flex-direction: row;
+    width: 65%;
 }
 
 .sectionContact {
@@ -788,7 +800,7 @@ button[type="submit"]:hover {
   }
   
   .quantity button:hover {
-    background-color: rgba(255, 255, 255, 0.3); /* Add hover effect */
+    background-color: rgb(83, 0, 0); /* Add hover effect */
   }
   
   .quantity button:first-child {
