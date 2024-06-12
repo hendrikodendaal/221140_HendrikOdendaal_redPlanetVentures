@@ -75,6 +75,49 @@ body{
     padding: 40px; /* Add padding for better spacing */
 }
 
+.slider {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
 .image-block {
     position: relative; /* Ensure proper positioning of arrows */
     flex-shrink: 0; /* Prevent image-block from shrinking */
@@ -331,9 +374,9 @@ footer nav ul li a {
 .top-nav {
     background-color: rgba(255, 246, 246, 0.678); 
     width: 90%;
-    margin: 0 auto;
+    margin: 20 auto;
     position: sticky;
-    top: 0;
+    top: 30;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 30px; 
@@ -341,7 +384,7 @@ footer nav ul li a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 20px;
     box-sizing: border-box;
     max-height: 50px;
 }
@@ -405,11 +448,16 @@ footer nav ul li a {
 
 .top-nav .search-cart-container {
     display: flex;
+    padding-right: 10%;
     align-items: center;
 }
 
 .top-nav .search-bar {
-    position: relative;
+    display: flex;
+    
+    align-items: center;
+    width: 100px;
+    padding-right: 50%;
 }
 
 .top-nav .search-input {
@@ -666,9 +714,7 @@ button[type="submit"]:hover {
     margin: 0;
 }
 
-.flexItem4 h2{
-    
-}
+
 
 .flexItem4 p{
     color: #aaaaaa;
@@ -681,6 +727,7 @@ button[type="submit"]:hover {
     overflow: hidden;
     border-radius: 10px;
 }
+
 
 .iconsSolcial {
     display: flex;
@@ -1056,3 +1103,228 @@ button[type="submit"]:hover {
     display: flex;
     flex-direction: row;
 }
+
+.icon-cart{
+    position: relative;
+    width: 30px;
+    padding-top: 0%;
+}
+.icon-cart span{
+    position: absolute;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    top: 50%;
+    right: -20px;
+}
+.title{
+    font-size: xx-large;
+}
+.listProduct .item img{
+    width: 90%;
+    filter: drop-shadow(0 50px 20px #0009);
+}
+.listProduct{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.listProduct .item{
+    background-color: #EEEEE6;
+    padding: 20px;
+    border-radius: 20px;
+}
+.listProduct .item h2{
+    font-weight: 500;
+    font-size: large;
+}
+.listProduct .item .price{
+    letter-spacing: 7px;
+    font-size: small;
+}
+.listProduct .item button{
+    background-color: #353432;
+    color: #eee;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+
+.cartTab{
+    width: 400px;
+    background-color: #353432;
+    color: #eee;
+    position: fixed;
+    top: 0;
+    right: -400px;
+    bottom: 0;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    transition: .5s;
+}
+body.showCart .cartTab{
+    right: 0;
+}
+body.showCart .container{
+    transform: translateX(-250px);
+}
+.cartTab h1{
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+}
+.cartTab .btn{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.cartTab button{
+    background-color: #ff0000;
+    border: none;
+    font-family: Poppins;
+    font-weight: 500;
+    cursor: pointer;
+}
+.cartTab .close{
+    background-color: #eee;
+}
+.listCart .item img{
+    width: 100%;
+}
+.listCart .item{
+    display: grid;
+    grid-template-columns: 70px 150px 50px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+}
+.listCart .quantity span{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    color: #555;
+    cursor: pointer;
+}
+.listCart .quantity span:nth-child(2){
+    background-color: transparent;
+    color: #eee;
+    cursor: auto;
+}
+.listCart .item:nth-child(even){
+    background-color: rgba(255, 0, 0, 0.067);
+}
+.listCart{
+    overflow: auto;
+}
+.listCart::-webkit-scrollbar{
+    width: 0;
+}
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin-top: 100px;
+    margin-left: -400px; /* Start off screen */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    animation: slideInLeft 0.5s forwards;
+}
+
+/* Close button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Button styling */
+.btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn button:hover {
+    background-color: #45a049;
+}
+
+/* Animation for sliding in from the left */
+@keyframes slideInLeft {
+    from { margin-left: -400px; }
+    to { margin-left: 0; }
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }

@@ -1,401 +1,563 @@
 <!DOCTYPE html>
-<!--This is a comment-->
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <!--Types of letters and symbols-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!--browser compatibility-->
-    <meta name="viewport" content="width-device-width, initial-scale-1.0"/>
-    <!--initial size-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="HTML,CSS, Template, Bootstrap" />
-    <!-- keywords nb!-->
     <meta name="author" content="Hendrik Odendaal, 221140" />
 
-    <title>Week 3</title>
+    <title>Red Planet Ventures</title>
 
     <!--Bootstrap, Javascript, Google Fonts, CSS-->
-    
     <link rel="stylesheet" href="../css/main.css" />
     <script src="../css/main.js" defer></script>
-  </head>
-  <body>
-    <header class="top-nav">
-      <div class="logo">
-          <a href="../index.html"><img src="../Assets/Images/logo.png"  class="logo-img"></a>
-      </div>
-      <nav>
-          <ul class="nav-links">
-              <li><a href="../index.html">Home</a></li>
-              <li><a class="active" href="../pages/flights.html">Flights</a></li>
-              <li><a  href="../pages/contact.html">Contact</a></li>
-          </ul>
-      </nav>
-     
+    <script defer>
+        function filterFlights() {
+            const searchInput = document.querySelector('.search-input').value.toLowerCase();
+            const flightItems = document.querySelectorAll('.product-item');
 
-              <div class="search-cart-container">
-                <input type="text" id="search-input" placeholder="Search flights...">
-                <button id="search-button">Search</button>
-            </div>
-             
-          </div>
-        
-     
-        </header>
-        <section class="sectionContact4">
-          <div class="overlay"> 
-            <h1>BOOK A FLIGHT </h1>
-            
-            
-        </div></div>
-        <div class="search-container">
-          <div class="search-bar2">
-            <div class="filter-options">
-                <!-- Add your filter elements here -->
-            </div>
-            <div class="result-counter">
-                Showing 1–16 of 32 results
-            </div>
-            <div class="dropdowns">
-                <!-- "Show" dropdown -->
-                <select>
-                    <option value="16">16 per page</option>
-                    <option value="32">32 per page</option>
-                    <option value="64">64 per page</option>
-                </select>
-                <!-- "Sort by" dropdown -->
-                <select>
-                    <option value="relevance">Sort by Relevance</option>
-                    <option value="price">Sort by Price</option>
-                    <option value="rating">Sort by Rating</option>
-                </select>
-            </div>
-        </div>
+            flightItems.forEach(item => {
+                const flightName = item.querySelector('h2, h3').innerText.toLowerCase();
+                const flightDescription = item.querySelector('.product-details p:nth-of-type(2)').innerText.toLowerCase();
+
+                if (flightName.includes(searchInput) || flightDescription.includes(searchInput)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.search-button').addEventListener('click', filterFlights);
+            document.querySelector('.search-input').addEventListener('keyup', filterFlights);
+        });
+    </script>
+    <style>
+      /* Modal styles */
+      .modal {
+          display: none;
+          position: fixed;
+          z-index: 1000;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          overflow: auto;
+      }
+
+      .modal-content {
+          background-color: #fefefe;
+          margin: 20% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+          max-width: 600px;
+      }
+
+      .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+      }
+  </style>
+</head>
+<body>
+<header class="top-nav">
+  <div class="search-cart-container">
+    <!-- Existing code... -->
+    <button class="view-cart-button">View Cart</button>
+</div>
+</header>
+
+<!-- Cart Modal -->
+<div id="cartModal" class="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Shopping Cart</h2>
+      <div class="listCart"></div>
+      <div class="btn">
+          <button class="continueShopping">Continue Shopping</button>
+          <button class="checkOut">Check Out</button>
       </div>
-      
-          
-      </section>
-        <section class="product-section" style="background-color: #ffffff;">
-          <div class="container">
-            <div class="product-item">
-              <div class="product-image">
-                <img src="../Assets/Images/upcomingTrip1.png" alt="Product Image">
-              </div>
-              <div class="product-details">
-                <h2>The Classic Mars Experience</h2>
-                <div class="paragraph"><p>R 25,000.00 <s>R50,000.00</s></p></div>
-                <!-- Stars for rating -->
-                <div class="rating rating10">
-                  <span class="star" onclick="setRating(1, 1)">&#9733;</span>
-                  <span class="star" onclick="setRating(2, 1)">&#9733;</span>
-                  <span class="star" onclick="setRating(3, 1)">&#9733;</span>
-                  <span class="star" onclick="setRating(4, 1)">&#9733;</span>
-                  <span class="star" onclick="setRating(5, 1)">&#9733;</span>
-                </div>
-                <div class="paragraph"><p>36 Customer Review</p>
-                <p>Embark on a voyage to Neptune aboard the "Neptune Voyager." Witness
+  </div>
+</div>
+</head>
+<body>
+<header class="top-nav">
+    <div class="logo">
+        <a href="../index.html"><img src="../Assets/Images/logo.png" class="logo-img"></a>
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a class="active" href="../pages/flights.html">Flights</a></li>
+            <li><a href="../pages/contact.html">Contact</a></li>
+            <li><a  href="../pages/about.html">About Us</a></li>
+        </ul>
+    </nav>
+    <div class="search-cart-container">
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search...">
+            <button class="search-button">Search</button>
+        </div>
+        <div class="containercart">
+            <div class="icon-cart">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"/>
+                </svg>
+                <span>0</span>
+                
+    </div>
+            </div>
+            <div class="listProduct"></div>
+        </div>
+    </div>
+</header>
+<section class="sectionContact4">
+    <div class="overlay">
+        <h1>BOOK A FLIGHT</h1>
+    </div>
+</section>
+<div class="search-container">
+    <div class="search-bar2">
+        <div class="filter-options"></div>
+        <div class="result-counter">Showing 1–6 of 12 results</div>
+        <div class="dropdowns">
+            <select>
+                <option value="16">6 per page</option>
+                <option value="32">12 per page</option>
+                <option value="64">24 per page</option>
+            </select>
+            <select>
+                <option value="relevance">Sort by Relevance</option>
+                <option value="price">Sort by Price</option>
+                <option value="rating">Sort by Rating</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="cartTab">
+    <h1>Shopping Cart</h1>
+    <div class="listCart"></div>
+    <div class="btn">
+        <button class="close">CLOSE</button>
+        <button href="../index.html" class="checkOut">Check Out</button>
+    </div>
+</div>
+
+<!-- Flight Sections -->
+
+
+<section class="product-section" style="background-color: #ffffff;">
+  <div class="container">
+    <div class="product-item">
+      <div class="product-image">
+        <img src="../Assets/Images/upcomingTrip1.png" alt="Product Image">
+      </div>
+      <div class="product-details">
+        <h2>The Classic Mars Experience</h2>
+        <div class="paragraph"><p>R 25,000.00 <s>R50,000.00</s></p></div>
+        <!-- Stars for rating -->
+        <div class="rating rating10">
+          <span class="star" onclick="setRating(1, 1)">&#9733;</span>
+          <span class="star" onclick="setRating(2, 1)">&#9733;</span>
+          <span class="star" onclick="setRating(3, 1)">&#9733;</span>
+          <span class="star" onclick="setRating(4, 1)">&#9733;</span>
+          <span class="star" onclick="setRating(5, 1)">&#9733;</span>
+        </div>
+        <div class="paragraph"><p>36 Customer Review</p>
+        <p>Embark on a voyage to Neptune aboard the "Neptune Voyager." Witness
 surreal vistas of swirling clouds and rings. Experience weightlessness and
 explore frigid oceans. Engage in thrilling spacewalks, observe celestial
 phenomena, and savor gourmet space cuisine. An unforgettable
 adventure awaits, blending luxury with cosmic exploration.</p></div>
-                <div class="action-buttons">
-                  <div class="quantity">
-                    <div class="quantity-container">
-                      <button class="subtract">-</button>
-                      <input type="number" class="quantity-input" name="quantity" value="1" min="1">
-                      <button class="add">+</button>
-                    </div>
-                    <button class="buttonbook">Book Now</button>
-                  </div>
-                  <hr>
-                  <div class="product-info">
-                    <div class="paragraph"><p>SKU: SS001</p>
-                    <p>Shuttle: The Opulence</p>
-                    <p>Tags: Mars, Luxury, Sale</p>
-                    <p>Date: 16 June - 19 July</p></div>
-                  </div>
-                </div>
-              </div>
+        <div class="action-buttons">
+          <div class="quantity">
+            <div class="quantity-container">
+              <button class="subtract">-</button>
+              <input type="number" class="quantity-input" name="quantity" value="1" min="1">
+              <button class="add">+</button>
             </div>
+            <button class="buttonbook">Book Now</button>
           </div>
-        </section>
-
-        <!--<div class="search-container">
-          <input type="text" id="search-input" placeholder="Search flights...">
-          <button id="search-button">Search</button>
+          <hr>
+          <div class="product-info">
+            <div class="paragraph"><p>SKU: SS001</p>
+            <p>Shuttle: The Opulence</p>
+            <p>Tags: Mars, Luxury, Sale</p>
+            <p>Date: 16 June - 19 July</p></div>
+          </div>
+        </div>
       </div>
-      
-      <div class="flight-item">
-          <div class="flight-details">
-              <h3 class="flight-name">Flight Name 1</h3>
-              <p class="destination">Destination: Destination 1</p>
-              <p class="departure-time">Departure Time: 10:00 AM</p>
-               Include other flight details here 
-          </div>
-          <button class="book-now-button">Book Now</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- Section 2 -->
+<section class="product-section" style="background-color: rgb(71, 26, 100);">
+  <div class="container">
+    <div class="product-item">
+      <div class="product-image">
+        <img src="../Assets/Images/flightNeptune.png" alt="Product Image">
       </div>
-      
-      <div class="flight-item">
-          <div class="flight-details">
-              <h3 class="flight-name">Flight Name 2</h3>
-              <p class="destination">Destination: Destination 2</p>
-              <p class="departure-time">Departure Time: 12:00 PM</p>
-              <!-- Include other flight details here 
-          </div>
-          <button class="book-now-button">Book Now</button>
-      </div>-->
-        
-        <!-- Section 2 -->
-        <section class="product-section" style="background-color: rgb(71, 26, 100);">
-          <div class="container">
-            <div class="product-item">
-              <div class="product-image">
-                <img src="../Assets/Images/flightNeptune.png" alt="Product Image">
-              </div>
-              <div class="product-details">
-                <h3>Neptune’s Cosmic Dive</h3>
-                <p>R 45,000.00</p>
-                <!-- Stars for rating -->
-                <div class="rating rating20">
-                  <span class="star" onclick="setRating(1, 2)">&#9733;</span>
-                  <span class="star" onclick="setRating(2, 2)">&#9733;</span>
-                  <span class="star" onclick="setRating(3, 2)">&#9733;</span>
-                  <span class="star" onclick="setRating(4, 2)">&#9733;</span>
-                  <span class="star" onclick="setRating(5, 2)">&#9733;</span>
-                </div>
-                <p>24 Customer Review</p>
-                <p>Embark on a voyage to Neptune aboard the "Neptune Voyager." Witness
-                  surreal vistas of swirling clouds and rings. Experience weightlessness and
-                  explore frigid oceans. Engage in thrilling spacewalks, observe celestial
-                  phenomena, and savor gourmet space cuisine. An unforgettable
-                  adventure awaits, blending luxury with cosmic exploration.</p>
-                <div class="action-buttons">
-                  <div class="quantity">
-                    <div class="quantity-container">
-                      <button class="subtract">-</button>
-                      <input type="number" class="quantity-input2" name="quantity" value="1" min="1">
-                      <button class="add">+</button>
-                    </div>
-                    <button class="buttonbook">Book Now</button>
-                  </div>
-                  <hr>
-                  <div class="product-info">
-                    <p>SKU: SS405</p>
-                    <p>Shuttle: The Voyager</p>
-                    <p>Tags: Neptune, Commercial, Gourmet Experience</p>
-                    <p>Date: 4 April - 28 March</p>
-                  </div>
-                </div>
-              </div>
+      <div class="product-details">
+        <h3>Neptune’s Cosmic Dive</h3>
+        <p>R 45,000.00</p>
+        <!-- Stars for rating -->
+        <div class="rating rating20">
+          <span class="star" onclick="setRating(1, 2)">&#9733;</span>
+          <span class="star" onclick="setRating(2, 2)">&#9733;</span>
+          <span class="star" onclick="setRating(3, 2)">&#9733;</span>
+          <span class="star" onclick="setRating(4, 2)">&#9733;</span>
+          <span class="star" onclick="setRating(5, 2)">&#9733;</span>
+        </div>
+        <p>24 Customer Review</p>
+        <p>Embark on a voyage to Neptune aboard the "Neptune Voyager." Witness
+          surreal vistas of swirling clouds and rings. Experience weightlessness and
+          explore frigid oceans. Engage in thrilling spacewalks, observe celestial
+          phenomena, and savor gourmet space cuisine. An unforgettable
+          adventure awaits, blending luxury with cosmic exploration.</p>
+        <div class="action-buttons">
+          <div class="quantity">
+            <div class="quantity-container">
+              <button class="subtract">-</button>
+              <input type="number" class="quantity-input2" name="quantity" value="1" min="1">
+              <button class="add">+</button>
             </div>
+            <button class="buttonbook">Book Now</button>
           </div>
-        </section>
-        
-        <!-- Section 3 -->
-        <section class="product-section" style="background-color: #ffffff;">
-          <div class="container">
-            <div class="product-item">
-              <div class="product-image">
-                <img src="../Assets/Images/upcomingTrip2.png" alt="Product Image">
-              </div>
-              <div class="product-details">
-                <h2>The Giant’s Journey</h2>
-                <div class="paragraph"><p>R 65,000.00</p></div>
-                <!-- Stars for rating -->
-                <div class="rating rating3">
-                  <span class="star" onclick="setRating(1, 3)">&#9733;</span>
-                  <span class="star" onclick="setRating(2, 3)">&#9733;</span>
-                  <span class="star" onclick="setRating(3, 3)">&#9733;</span>
-                  <span class="star" onclick="setRating(4, 3)">&#9733;</span>
-                  <span class="star" onclick="setRating(5, 3)">&#9733;</span>
-                </div>
-                <div class="paragraph"><p>48 Customer Review</p>
-                <p>Embark on a Jupiter voyage aboard the "Jupiter Odyssey." Witness its
-                  majestic storms and swirling atmosphere. Dive into metallic hydrogen
-                  oceans. Explore its moons, each a world unto itself. Engage in gravity
-                  surfing, comet chasing, and space excursions. Experience cosmic wonder
-                  in luxury, blending exploration with adventure.</p></div>
-                <div class="action-buttons">
-                  <div class="quantity">
-                    <div class="quantity-container">
-                      <button class="subtract">-</button>
-                      <input type="number" class="quantity-input3" name="quantity" value="1" min="1">
-                      <button class="add">+</button>
-                    </div>
-                    <button class="buttonbook">Book Now</button>
-                  </div>
-                  <hr>
-                  <div class="product-info">
-                    <div class="paragraph"><p>SKU: SS606</p>
-                    <p>Shuttle: The Odyssey </p>
-                    <p>Tags: Jupiter, Luxury, Adventure</p>
-                    <p>Date:  15 June - 30 July</p></div>
-                  </div>
-                </div>
-              </div>
+          <hr>
+          <div class="product-info">
+            <p>SKU: SS405</p>
+            <p>Shuttle: The Voyager</p>
+            <p>Tags: Neptune, Commercial, Gourmet Experience</p>
+            <p>Date: 4 April - 28 March</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3 -->
+<section class="product-section" style="background-color: #ffffff;">
+  <div class="container">
+    <div class="product-item">
+      <div class="product-image">
+        <img src="../Assets/Images/upcomingTrip2.png" alt="Product Image">
+      </div>
+      <div class="product-details">
+        <h2>The Giant’s Journey</h2>
+        <div class="paragraph"><p>R 65,000.00</p></div>
+        <!-- Stars for rating -->
+        <div class="rating rating3">
+          <span class="star" onclick="setRating(1, 3)">&#9733;</span>
+          <span class="star" onclick="setRating(2, 3)">&#9733;</span>
+          <span class="star" onclick="setRating(3, 3)">&#9733;</span>
+          <span class="star" onclick="setRating(4, 3)">&#9733;</span>
+          <span class="star" onclick="setRating(5, 3)">&#9733;</span>
+        </div>
+        <div class="paragraph"><p>48 Customer Review</p>
+        <p>Embark on a Jupiter voyage aboard the "Jupiter Odyssey." Witness its
+          majestic storms and swirling atmosphere. Dive into metallic hydrogen
+          oceans. Explore its moons, each a world unto itself. Engage in gravity
+          surfing, comet chasing, and space excursions. Experience cosmic wonder
+          in luxury, blending exploration with adventure.</p></div>
+        <div class="action-buttons">
+          <div class="quantity">
+            <div class="quantity-container">
+              <button class="subtract">-</button>
+              <input type="number" class="quantity-input3" name="quantity" value="1" min="1">
+              <button class="add">+</button>
             </div>
+            <button class="buttonbook">Book Now</button>
           </div>
-        </section>
-        <section class="product-section" style="background-color: rgb(71, 26, 100);"> <!-- Change background color here -->
-          <div class="container">
-            <div class="product-item">
-              <div class="product-image">
-                <img src="../Assets/Images/flightSaturn.png" alt="Product Image">
-              </div>
-              <div class="product-details">
-                <h3>Ring Around a Saturn</h3>
-                <p>R 40,000.00</p>
-                <!-- Stars for rating -->
-                <div class="rating">
-                  <!-- Insert stars here -->
-                  <div class="rating4">
-                    <span class="star" onclick="setRating(1, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(2, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(3, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(4, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(5, 1)">&#9733;</span>
-                  </div>
-                </div>
-                <p>16 Customer Review</p>
-                <p>Embark on a thrilling voyage to Saturn aboard the "Saturn Explorer."
-                  Marvel at its iconic rings and turbulent storms. Explore its diverse moons,
-                  from icy Enceladus to mysterious Titan, with activities including rover
-                  expeditions and cave exploration. Experience the wonders of the cosmos
-                  amidst luxurious accommodations, where the thrill of discovery
-                  intertwines seamlessly with the excitement of adventure.</p>
-                
-                <div class="action-buttons">
-                  <div class="quantity">
-                    <div class="quantity-container">
-                      <button class="subtract" >-</button>
-                      <input type="number" id="quantity" name="quantity" value="1" min="1">
-                      <button class="add">+</button>
-                    </div>
-                    <button class="buttonbook">Book Now</button>
-                  </div>
-                  
-                  <hr>
-                  <div class="product-info">
-                    <p>SKU: SS333</p>
-                    <p>Shuttle: The Explorer</p>
-                    <p>Tags: Saturn, Luxury, Adventure</p>
-                    <p>Date: 4 April - 28 March</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <hr>
+          <div class="product-info">
+            <div class="paragraph"><p>SKU: SS606</p>
+            <p>Shuttle: The Odyssey </p>
+            <p>Tags: Jupiter, Luxury, Adventure</p>
+            <p>Date:  15 June - 30 July</p></div>
           </div>
-        </section>
-        <section class="product-section" style="background-color: #ffffff;"> <!-- Change background color here -->
-          <div class="container">
-            <div class="product-item">
-              <div class="product-image">
-                <img src="../Assets/Images/flightUranus.png" alt="Product Image">
-              </div>
-              <div class="product-details">
-                <h2>Uranus Uncharted</h2>
-                <div class="paragraph"><p>R 50,000.00</p></div>
-                <!-- Stars for rating -->
-                <div class="rating">
-                  <!-- Insert stars here -->
-                  <div class="rating5">
-                    <span class="star" onclick="setRating(1, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(2, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(3, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(4, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(5, 1)">&#9733;</span>
-                  </div>
-                </div>
-                <div class="paragraph"><p>12 Customer Review</p>
-                <p>Embark on a cosmic adventure to Uranus with our "Uranus Unveiled" tour.
-                  Explore its icy atmosphere and captivating moons. Experience thrilling
-                  zero-gravity excursions, witness mesmerizing auroras, and immerse
-                  yourself in celestial photography workshops. With luxury
-                  accommodations and expert guides, discover the wonders of Uranus in a
-                  journey of a lifetime.</p></div>
-                
-                <div class="action-buttons">
-                  <div class="quantity">
-                    <div class="quantity-container">
-                      <button class="subtract">-</button>
-                      <input type="number" id="quantity" name="quantity" value="1" min="1">
-                      <button class="add">+</button>
-                    </div>
-                    <button class="buttonbook">Book Now</button>
-                  </div>
-                  
-                  <hr>
-                  <div class="product-info">
-                    <div class="paragraph"><p>SKU: SS735</p>
-                    <p>Shuttle: The Endeavor</p>
-                    <p>Tags: Uranus, Workshop, Adventure</p>
-                    <p>Date: 16 May - 19 July</p></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="product-section" style="background-color: rgb(71, 26, 100);"> <!-- Change background color here -->
+  <div class="container">
+    <div class="product-item">
+      <div class="product-image">
+        <img src="../Assets/Images/flightSaturn.png" alt="Product Image">
+      </div>
+      <div class="product-details">
+        <h3>Ring Around a Saturn</h3>
+        <p>R 40,000.00</p>
+        <!-- Stars for rating -->
+        <div class="rating">
+          <!-- Insert stars here -->
+          <div class="rating4">
+            <span class="star" onclick="setRating(1, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(2, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(3, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(4, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(5, 1)">&#9733;</span>
           </div>
-        </section>
+        </div>
+        <p>16 Customer Review</p>
+        <p>Embark on a thrilling voyage to Saturn aboard the "Saturn Explorer."
+          Marvel at its iconic rings and turbulent storms. Explore its diverse moons,
+          from icy Enceladus to mysterious Titan, with activities including rover
+          expeditions and cave exploration. Experience the wonders of the cosmos
+          amidst luxurious accommodations, where the thrill of discovery
+          intertwines seamlessly with the excitement of adventure.</p>
         
-        <section class="product-section" style="background-color: rgb(71, 26, 100);"> <!-- Change background color here -->
-          <div class="container">
-            <div class="product-item">
-              <div class="product-image">
-                <img src="../Assets/Images/flightMoon.png" alt="Product Image">
-              </div>
-              <div class="product-details">
-                <h3>Moonlight Meander</h3>
-                <p>R 15,000.00</p>
-                <!-- Stars for rating -->
-                <div class="rating">
-                  <!-- Insert stars here -->
-                  <div class="rating">
-                    <span class="star" onclick="setRating(1, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(2, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(3, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(4, 1)">&#9733;</span>
-                    <span class="star" onclick="setRating(5, 1)">&#9733;</span>
-                  </div>
-                </div>
-                <p>43 Customer Review</p>
-                <p>Experience the ultimate lunar getaway with our "Moonlight Meander"
-                  package. Depart Earths atmosphere aboard the "Celestial Cruiser" for a
-                  short but unforgettable journey to the Moon. Enjoy lunar walks,
-                  breathtaking views of Earthrise, and stargazing under the moons serene
-                  glow. Immerse yourself in luxury accommodations amidst the tranquility
-                  of space</p>
-                
-                <div class="action-buttons">
-                  <div class="quantity">
-                    <div class="quantity-container">
-                      <button class="subtract">-</button>
-                      <input type="number" id="quantity" name="quantity" value="1" min="1">
-                      <button class="add">+</button>
-                    </div>
-                    <button class="buttonbook">Book Now</button>
-                  </div>
-                  
-                  <hr>
-                  <div class="product-info">
-                    <p>SKU: SS451</p>
-                    <p>Shuttle: The Voyager</p>
-                    <p>Tags: Moon, Commercial, Romantic</p>
-                    <p>Date: : 5 August - 12 August</p>
-                  </div>
-                </div>
-              </div>
+        <div class="action-buttons">
+          <div class="quantity">
+            <div class="quantity-container">
+              <button class="subtract" >-</button>
+              <input type="number" id="quantity" name="quantity" value="1" min="1">
+              <button class="add">+</button>
             </div>
+            <button class="buttonbook">Book Now</button>
           </div>
-        </section>
+          
+          <hr>
+          <div class="product-info">
+            <p>SKU: SS333</p>
+            <p>Shuttle: The Explorer</p>
+            <p>Tags: Saturn, Luxury, Adventure</p>
+            <p>Date: 4 April - 28 March</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="product-section" style="background-color: #ffffff;"> <!-- Change background color here -->
+  <div class="container">
+    <div class="product-item">
+      <div class="product-image">
+        <img src="../Assets/Images/flightUranus.png" alt="Product Image">
+      </div>
+      <div class="product-details">
+        <h2>Uranus Uncharted</h2>
+        <div class="paragraph"><p>R 50,000.00</p></div>
+        <!-- Stars for rating -->
+        <div class="rating">
+          <!-- Insert stars here -->
+          <div class="rating5">
+            <span class="star" onclick="setRating(1, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(2, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(3, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(4, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(5, 1)">&#9733;</span>
+          </div>
+        </div>
+        <div class="paragraph"><p>12 Customer Review</p>
+        <p>Embark on a cosmic adventure to Uranus with our "Uranus Unveiled" tour.
+          Explore its icy atmosphere and captivating moons. Experience thrilling
+          zero-gravity excursions, witness mesmerizing auroras, and immerse
+          yourself in celestial photography workshops. With luxury
+          accommodations and expert guides, discover the wonders of Uranus in a
+          journey of a lifetime.</p></div>
         
+        <div class="action-buttons">
+          <div class="quantity">
+            <div class="quantity-container">
+              <button class="subtract">-</button>
+              <input type="number" id="quantity" name="quantity" value="1" min="1">
+              <button class="add">+</button>
+            </div>
+            <button class="buttonbook">Book Now</button>
+          </div>
+          
+          <hr>
+          <div class="product-info">
+            <div class="paragraph"><p>SKU: SS735</p>
+            <p>Shuttle: The Endeavor</p>
+            <p>Tags: Uranus, Workshop, Adventure</p>
+            <p>Date: 16 May - 19 July</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product-section" style="background-color: rgb(71, 26, 100);"> <!-- Change background color here -->
+  <div class="container">
+    <div class="product-item">
+      <div class="product-image">
+        <img src="../Assets/Images/flightMoon.png" alt="Product Image">
+      </div>
+      <div class="product-details">
+        <h3>Moonlight Meander</h3>
+        <p>R 15,000.00</p>
+        <!-- Stars for rating -->
+        <div class="rating">
+          <!-- Insert stars here -->
+          <div class="rating">
+            <span class="star" onclick="setRating(1, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(2, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(3, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(4, 1)">&#9733;</span>
+            <span class="star" onclick="setRating(5, 1)">&#9733;</span>
+          </div>
+        </div>
+        <p>43 Customer Review</p>
+        <p>Experience the ultimate lunar getaway with our "Moonlight Meander"
+          package. Depart Earths atmosphere aboard the "Celestial Cruiser" for a
+          short but unforgettable journey to the Moon. Enjoy lunar walks,
+          breathtaking views of Earthrise, and stargazing under the moons serene
+          glow. Immerse yourself in luxury accommodations amidst the tranquility
+          of space</p>
         
+        <div class="action-buttons">
+          <div class="quantity">
+            <div class="quantity-container">
+              <button class="subtract">-</button>
+              <input type="number" id="quantity" name="quantity" value="1" min="1">
+              <button class="add">+</button>
+            </div>
+            <button class="buttonbook">Book Now</button>
+          </div>
+          
+          <hr>
+          <div class="product-info">
+            <p>SKU: SS451</p>
+            <p>Shuttle: The Voyager</p>
+            <p>Tags: Moon, Commercial, Romantic</p>
+            <p>Date: : 5 August - 12 August</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Additional Flight Sections... -->
+
+<script defer>
+  function filterFlights() {
+      const searchInput = document.querySelector('.search-input').value.toLowerCase();
+      const flightItems = document.querySelectorAll('.product-section'); // Select flight sections
+
+      flightItems.forEach(section => {
+          const flightName = section.querySelector('h2, h3').innerText.toLowerCase();
+          const flightDescription = section.querySelector('.product-details p:nth-of-type(2)').innerText.toLowerCase();
+
+          if (flightName.includes(searchInput) || flightDescription.includes(searchInput)) {
+              section.style.display = '';
+          } else {
+              section.style.display = 'none';
+          }
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.search-button').addEventListener('click', filterFlights);
+      document.querySelector('.search-input').addEventListener('keyup', filterFlights);
+  });
+
+ 
+   // Function to open the modal
+   function openModal() {
+        document.getElementById('cartModal').style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('cartModal').style.display = 'none';
+    }
+
+    // Function to update the cart count
+    function updateCartCount() {
+        const cartCount = document.querySelector('.icon-cart span');
+        const itemCount = document.querySelectorAll('.listCart .item').length;
+        cartCount.textContent = itemCount;
+    }
+
+    // Event listener to open the modal when View Cart button is clicked
+    document.querySelector('.icon-cart').addEventListener('click', openModal);
+
+    // Event listener to close the modal when Close button is clicked
+    document.querySelectorAll('.close').forEach(function(btn) {
+        btn.addEventListener('click', closeModal);
+    });
+
+    // Event listener to close the modal when clicking outside the modal content
+    window.addEventListener('click', function(event) {
+        if (event.target == document.getElementById('cartModal')) {
+            closeModal();
+        }
+    });
+
+    // Function to update the total amount in the cart
+    function updateTotal() {
+        // Calculate total amount...
+    }
+
+    // Function to add flight item to cart
+    function addToCart(name, price) {
+        const cartList = document.querySelector('.listCart');
+
+        // Create cart item element
+        const item = document.createElement('div');
+        item.classList.add('item');
+        item.innerHTML = `
+            <span class="name">${name}</span>
+            <span class="price">R ${price.toFixed(2)}</span>
+            <input type="number" class="quantity" value="1" min="1">
+        `;
+
+        // Add event listener to quantity input
+        item.querySelector('.quantity').addEventListener('change', updateTotal);
+
+        // Append item to cart list
+        cartList.appendChild(item);
+
+        // Update cart count
+        updateCartCount();
+
+        // Update total amount
+        updateTotal();
+    }
+
+    // Event listener for Book Now button
+    document.querySelectorAll('.buttonbook').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const itemContainer = button.closest('.product-item');
+            const name = itemContainer.querySelector('h2, h3').textContent;
+            const price = parseFloat(itemContainer.querySelector('.paragraph p').textContent.replace('R ', '').replace(',', ''));
+            addToCart(name, price);
+        });
+    });
+
+    // Event listener for Continue Shopping button
+document.querySelector('.continueShopping').addEventListener('click', closeModal);
+
+// Event listener for Check Out button
+document.querySelector('.checkOut').addEventListener('click', function() {
+    // Redirect to the home page
+    window.location.href = '../index.html';
+});
 
 
-
-
-       
-        <script src="script.js"></script>
-</body>
+</script>
 
 <footer class="footer">
   <div class="logo">
@@ -409,19 +571,18 @@ adventure awaits, blending luxury with cosmic exploration.</p></div>
   <nav class="menu">
     <div class="menu2"><p>COMPANY</p>
       <ul class="menu3">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Flights</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../pages/flights.html">Flights</a></li>
+          <li><a href="../pages/contact.html">Contact Us</a></li>
       </ul></div>
   </nav>
   <div class="social-icons">
     <p>SOCIAL MEDIA LINKS</p>
-     <div class="social-icons2"> <a href="../pages/contact.html"><img src="../Assets/Images/smInstagram.png" alt="Instagram"></a>
-      <a href="../pages/contact.html"><img src="../Assets/Images/smX.png" alt="Twitter"></a>
-      <a href="../pages/contact.html"><img src="../Assets/Images/smTicktock.png" alt="TikTok"></a>
-      <a href="../pages/contact.html"><img src="../Assets/Images/smFacebook.png" alt="Facebook"></a></div>
+     <div class="social-icons2"> <a href="https://www.instagram.com/openwindowinstitute/?hl=en"><img src="../Assets/Images/smInstagram.png" alt="Instagram"></a>
+      <a href="https://x.com/open_window_?lang=en"><img src="../Assets/Images/smX.png" alt="Twitter"></a>
+      <a href="https://www.tiktok.com/@open_window_"><img src="../Assets/Images/smTicktock.png" alt="TikTok"></a>
+      <a href="https://web.facebook.com/theopenwindow/?_rdc=1&_rdr"><img src="../Assets/Images/smFacebook.png" alt="Facebook"></a></div>
   </div>
 </footer>
-        
-          
-        </html>
+</body>
+</html>

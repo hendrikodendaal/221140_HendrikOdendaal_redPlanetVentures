@@ -44,39 +44,75 @@ function setRating(rating, sectionIndex) {
   console.log('User rated ' + rating + ' stars for section ' + sectionIndex);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  const addToCartButtons = document.querySelectorAll('.add-to-cart');
-  const cartItemsList = document.querySelector('.cart-items');
-  const cartTotal = document.querySelector('.cart-total');
+let currentSlide = 0;
 
-  let cart = []; // Initialize empty cart
+function showSlide(index) {
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
 
-  // Event listener for add to cart buttons
-  addToCartButtons.forEach(button => {
-      button.addEventListener('click', function() {
-          const flightItem = button.parentElement;
-          const flightName = flightItem.querySelector('h3').innerText;
-          const flightPrice = parseFloat(flightItem.querySelector('p').innerText.split('$')[1]); // Extract price
+    if (index >= totalSlides) {
+        currentSlide = 0;
+    } else if (index < 0) {
+        currentSlide = totalSlides - 1;
+    } else {
+        currentSlide = index;
+    }
 
-          addToCart(flightName, flightPrice);
-      });
-  });
+    const offset = -currentSlide * 100;
+    document.querySelector('.slider-wrapper').style.transform = `translateX(${offset}%)`;
+}
 
- // document.addEventListener('DOMContentLoaded', function() {
- //   const searchButton = document.getElementById('search-button');
- //   const searchInput = document.getElementById('search-input');
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
 
- //   searchButton.addEventListener('click', function() {
-  //      const searchTerm = searchInput.value.toLowerCase().trim();
-  //      const flightItems = document.querySelectorAll('.flight-item');
+function prevSlide() {
+    showSlide(currentSlide - 1);
+}
 
-   //     flightItems.forEach(function(item) {
-   //         const itemName = item.querySelector('.flight-name').innerText.toLowerCase();
-   //         if (itemName.includes(searchTerm)) {
-   //             item.style.display = 'block';
-    //        } else {
-     //           item.style.display = 'none';
-     //       }
- //       });
-//    });
-//  });
+// Automatically show the first slide on page load
+document.addEventListener('DOMContentLoaded', () => {
+    showSlide(currentSlide);
+});
+
+function bookNow(button) {
+  // Get the quantity input value
+  const quantityContainer = button.parentElement.querySelector('.quantity-container');
+  const quantityInput = quantityContainer.querySelector('input[type="number"]');
+  const quantity = quantityInput.value;
+
+  // Create a confirmation message
+  const confirmationMessage = `Do you want to book ${quantity} unit(s)?`;
+
+  // Show a confirmation dialog
+  if (confirm(confirmationMessage)) {
+      alert(`Booking ${quantity} unit(s) confirmed!`);
+      // Add further booking logic here
+  } else {
+      alert('Booking cancelled.');
+  }
+}
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user submits the form, display the modal
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+  modal.style.display = "block"; // Display the modal
+});
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
